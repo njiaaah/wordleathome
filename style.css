@@ -10,6 +10,8 @@ body {
   /* kek */
 
   :root {
+      touch-action: manipulation;
+
     --letter-box-bg: #d8d8d8;
     --letter-box-border: #858585;
     --letter-box-font: #313131;
@@ -137,3 +139,67 @@ body {
         transform: scale(1);
     }
  } 
+
+
+ /* keyboard */
+
+ .keyboard-container {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: grid;
+ }
+
+ .keyboard-keys-container {
+  display: grid;
+  grid-template-columns: repeat(12,1fr) ;
+  grid-row-gap: .25rem;
+ }
+
+ .keyboard-letter {
+  display: inline;
+  font-size: 3rem;
+  background-color: var(--letter-box-bg);
+  border: 1px solid var(--letter-box-dark);
+  color: var(--letter-box-font);
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 40px 5px;
+  margin: .35rem;
+ }
+
+ .keyboard-keys-container div:nth-child(25) {
+  grid-column-start: 2;
+ }
+
+ .keyboard-control-backspace,
+ .keyboard-control-enter {
+  color: var(--letter-box-bg);
+  background-color: var(--letter-box-font);
+  border-radius: 15px;
+  padding: 40px 5px;
+  font-size: 3rem; 
+ }
+
+ .keyboard-keys-container div:last-child {
+  grid-column: span 2;
+ }
+
+ .keyboard-keys-container div:hover {
+  transform: scale(.95);
+  transition: all 150ms ease-in;
+ }
+
+ .kb-dark {
+  background-color: var(--letter-box-dark);
+  opacity: .25;
+ }
+
+ .kb-yellow {
+  background-color: var(--letter-box-yellow);
+ }
+
+ .kb-green {
+  background-color: var(--letter-box-green) !important ;
+ }
+
