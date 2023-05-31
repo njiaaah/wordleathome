@@ -156,6 +156,10 @@ body {
   grid-row-gap: .25rem;
  }
 
+ .keyboard-keys-container div {
+  user-select: none;
+ }
+
  .keyboard-letter {
   display: inline;
   font-size: 3rem;
