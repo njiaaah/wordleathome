@@ -4,6 +4,9 @@ body {
     display: grid;
     place-items: center;
     background-color: rgb(228, 228, 228);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 
   }
 
@@ -21,34 +24,25 @@ body {
     --letter-box-dark: #818181;
   }
     
-  
-  h1 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-
   .guess-container {
-    width: 82vw;
     display: grid;
-    
-    padding: 3vh 0 4vh 0;
     grid-template-rows: repeat(6, 1fr);
+    padding-top: 20px;
   }
   
   .letter-row {
-    margin: 1vh 0 ;
     display: grid;
     grid-template-columns: repeat(5,1fr)
   }
 
   .letter-row > div {
-    width: 15vw;
-    height: 15vw;
-    margin: 0rem 0.5rem;
+    width: 175px;
+    height: 175px;
     outline: 1px solid var(--letter-box-border);
     border-radius: 2px;
     background: var(--letter-box-bg);
-    font-size: 8rem;
+    font-size: 7rem;
+    margin: 12px 4px;
     font-weight: 500;
     text-align: center;
     color: var(--letter-box-font);
@@ -112,7 +106,7 @@ body {
     font-size: 5rem;
     margin-top: 5vh;
     display: none;
-
+    /* opacity: 0; */
   }
 
   
@@ -144,9 +138,12 @@ body {
  /* keyboard */
 
  .keyboard-container {
+  
   position: absolute;
-  bottom: 2rem;
-  width: 100%;
+  margin: auto;
+  width: 95vw;
+  left: 2.5vw;
+  bottom: 2.5vw;
   display: grid;
  }
 
@@ -207,3 +204,49 @@ body {
   background-color: var(--letter-box-green) !important ;
  }
 
+
+
+@media screen and (min-width: 1025px){
+    .letter-row > div {
+    width: 100px;
+    height: 100px;
+    font-size: 4.5rem;
+  }
+
+  .keyboard-container {
+    width: 60vw;
+    left: 20vw;
+   }
+
+   .keyboard-keys-container {
+    display: grid;
+    grid-template-columns: repeat(12,1fr) ;
+    grid-row-gap: 1px;
+   }
+
+  .keyboard-letter {
+  font-size: 2.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+    padding: 30px 15px;   
+  }
+.keyboard-control-backspace,
+.keyboard-control-enter {
+ border-radius: 15px;
+ padding: 40px 0px; 
+ border: 5px solid white;
+ font-size: 2.5rem; 
+}
+
+.restart-btn {
+  outline: 1px solid red;
+  width: 300px;
+  height: 100px;
+  font-size: 2vw;
+  margin-top: 3vh;
+  display: none;
+  /* opacity: 0; */
+}
+
+
+}
