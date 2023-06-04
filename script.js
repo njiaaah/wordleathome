@@ -5,6 +5,8 @@ $(document).ready(function() {
     // do not open 
 
     var wordArrayEasy = [
+
+        "гений",
         "аббат",
         "абзац",
         "аборт",
@@ -1761,6 +1763,7 @@ $(document).ready(function() {
 
     var wordArray = ["абака",
         "аббат",
+        "гений",
         "абвер",
         "ложка",
         "абзац",
@@ -3579,15 +3582,10 @@ $(document).ready(function() {
         "труха",
         "туаль",
         "тубус",
-        "тугай",
         "тугун",
         "тукан",
-        "тулес",
-        "тулий",
         "тулуз",
-        "тулук",
         "тулуп",
-        "тулья",
         "тунец",
         "турач",
         "турок",
@@ -3909,7 +3907,9 @@ $(document).ready(function() {
 
     function startNewGame() {
         secretWord = wordArrayEasy[Math.floor(Math.random() * wordArray.length)]
-        console.log(secretWord)
+        if(secretWord == undefined) {
+            startNewGame()
+        }
     }
 
 
@@ -3980,7 +3980,7 @@ $(document).ready(function() {
         }, 1000, function(){
             $('.error-container').animate({
                 opacity: 0
-            }, 3000)
+            }, 2000)
         })
 
         
@@ -3993,12 +3993,49 @@ $(document).ready(function() {
         if(isGameOver) {} 
         else {
             inputContent = $('.input-holder').val()
+
+            // check if loh
+
+                if (inputContent === 'я-лох' || inputContent === 'ялох' ) {
+                    inputError = true
+                    inputErrorMsg = 'ЛОХ))))))))'
+                    $('.input-holder').val(secretWord)
+                    inputContent = $('.input-holder').val()
+                    inputContentUpdate = inputContent.toUpperCase()
+
+                    if (inputContent.length < 6) {
+                        for (let i = 0; i < (5 - inputContent.length); i++) {
+                            inputContentUpdate = inputContentUpdate + ' '
+                            
+                        }
+                        
+                    } else {
+                        inputContent = inputContent.substring(0,5)
+                        $('.input-holder').val(inputContent)
+                    }
+                    
+                    for (let i = 0; i < 5; i++) {
+                        $("#" + currentRow + " div:nth-child(" + ( i + 1 ) + ")").html(inputContentUpdate[i])  
+                        
+                    }
+                    $("#" + currentRow + " div:nth-child(" + (inputContent.length) + ")").addClass('pop-up')
+            
+                    $("#" + currentRow + " div:nth-child(" + (inputContent.length + 1) + ")").removeClass('pop-up')
+
+
+                            setTimeout(()=> {
+                                $('.keyboard-control-enter').trigger('click');
+                            },1000)
+                            return(inputErrorMsg)     
+                        }
+
     
             // input is empty 
+            
     
             if (inputContent.length == "") {
                 inputError = true
-                inputErrorMsg = 'Напиши что-нибудь, конченый долбоеб'
+                inputErrorMsg = 'Напиши что-нибудь'
                 return(inputErrorMsg)
             } 
     
@@ -4006,7 +4043,7 @@ $(document).ready(function() {
     
             if (regex.test(inputContent)) {
                 inputError = true
-                inputErrorMsg = 'Только кириллица, конченый долбоеб'
+                inputErrorMsg = 'Только кириллица'
                 return(inputErrorMsg)
             }         
     
@@ -4015,7 +4052,7 @@ $(document).ready(function() {
             if (inputContent.length === N) {} 
             else {
                 inputError = true
-                inputErrorMsg = 'В слове должно быть 5 букв, конченый долбоеб'
+                inputErrorMsg = 'В слове должно быть 5 букв'
                 return(inputErrorMsg)
             }
     
@@ -4023,7 +4060,7 @@ $(document).ready(function() {
     
             if ($.inArray(inputContent.toLowerCase(), wordArray) ==-1) {
                 inputError = true
-                inputErrorMsg = 'Слово выдумано, а ты - конченый долбоеб'
+                inputErrorMsg = 'Слово выдумано'
                 return(inputErrorMsg)
             } 
     
@@ -4031,7 +4068,7 @@ $(document).ready(function() {
     
             if ($.inArray(inputContent, guessedWords) == false ) {
                 inputError = true
-                inputErrorMsg = 'уже пробовал это слово, конченый долбоеб'
+                inputErrorMsg = 'уже пробовал это слово'
                 return(inputErrorMsg) 
             }
     
@@ -4042,11 +4079,13 @@ $(document).ready(function() {
             for (let i = 0; i < N; i++) {
                 if (bannedChars.indexOf(inputContent[i].toLowerCase()) > -1) {
                     inputError = true
-                    inputErrorMsg = 'пробуй другие буквы, конченый долбоеб'
+                    inputErrorMsg = 'Эти буквы не подходят'
                     return(inputErrorMsg) 
                 }
                 
             }
+
+
 
             // input is correct, next row, check if gg
     
@@ -4084,8 +4123,8 @@ $(document).ready(function() {
                $('.inputs-container').fadeOut();
                $('.restart-btn').toggle();
             } if (currentRow === 5) {
-                console.log('лох')
-                console.log(secretWord)
+                // console.log('лох')
+                // console.log(secretWord)
             } else {
                 inputContent = ''
                 $('.input-holder').val(inputContent)
@@ -4093,16 +4132,16 @@ $(document).ready(function() {
 
                 // edit keyboard
 
-                console.log(bannedChars)
-                console.log(correctChars)
-                console.log(correctCharsPos)
+                // console.log(bannedChars)
+                // console.log(correctChars)
+                // console.log(correctCharsPos)
 
                 // grey out banned chars 
 
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (bannedChars.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
+                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-dark')         
                     }          
                 }
@@ -4112,7 +4151,7 @@ $(document).ready(function() {
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (correctChars.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
+                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-yellow')         
                     }          
                 }
@@ -4122,7 +4161,7 @@ $(document).ready(function() {
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (correctCharsPos.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
+                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-green')         
                     }          
                 }
@@ -4140,28 +4179,28 @@ $(document).ready(function() {
 
     // keyboard logic touch
 
-    $('.keyboard-letter').on('touchstart', function(){
-        console.log('itaped')
-        if (isGameOver) {} 
-        else {
-            let KBkey = $(this).text()
-            inputContent += KBkey.toLowerCase()
-            $('.input-holder').val(inputContent) 
-            placeInput()
-        }
-    })
+    // $('.keyboard-letter').on('touchstart', function(){
+    //     console.log('itaped')
+    //     if (isGameOver) {} 
+    //     else {
+    //         let KBkey = $(this).text()
+    //         inputContent += KBkey.toLowerCase()
+    //         $('.input-holder').val(inputContent) 
+    //         placeInput()
+    //     }
+    // })
 
-    $('.keyboard-control-backspace').on('touchstart', function () { 
-        inputContent = inputContent.substring(0,inputContent.length - 1)
-        $('.input-holder').val(inputContent)
-        placeInput()
-     })
+    // $('.keyboard-control-backspace').on('touchstart', function () { 
+    //     inputContent = inputContent.substring(0,inputContent.length - 1)
+    //     $('.input-holder').val(inputContent)
+    //     placeInput()
+    //  })
 
 
          // keyboard logic click
 
     $('.keyboard-letter').click( function(){
-        console.log('itaped')
+        // console.log('itaped')
         if (isGameOver) {} 
         else {
             let KBkey = $(this).text()
@@ -4178,12 +4217,51 @@ $(document).ready(function() {
      })
 
 
+    // forse focus for desctop
 
 
+    if(window.matchMedia("(max-width: 900px)").matches){
+            
+    } else{
+        // desctop
+        $('html').on('click', function( ){
+        $('.input-holder').focus()
+        })
+    }
 
 
+    // faq close/open
 
-    startNewGame()
+    let isFaqOpen = false
 
+
+    $('.keyboard-control-question').click(function(){
+        if (!isFaqOpen) {
+            $('#faq').css('transform', 'translate(0,0)')
+            isFaqOpen = !isFaqOpen
+        }
+    })
+
+    $('#faq').click(function(){
+        closeFaq()
+    })
+
+
+    function closeFaq() {
+        if(isFaqOpen) {
+            $('#faq').css('transform', 'translate(-1600px,0)')
+            isFaqOpen = !isFaqOpen
+        }
+    }
+
+    
+
+    setTimeout(()=> {
+        startNewGame()
+        console.log(secretWord)
+    },1)
+
+  
+    $('.input-holder').focus()
   });
   

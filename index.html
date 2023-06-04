@@ -13,15 +13,28 @@
 </head>
 <body>
 
+  <div id="faq">
+    <p>Необходимо угадать слово из 5 букв за 6 попыток. 
+    После ввода слова буквы подкрашиваются:</p>
+    <div class="letter-row "><div class="correct-char">Х</div></div> 
+    <p>В желтый если буква присутствует в слове</p>
+    <div class="letter-row "><div class="correct-char-and-pos">У</div></div> 
+    <p>В зеленый если буква присутствует в слове и находится в той же позиции  </p>
+    <div class="letter-row "><div class="wrong-char">Й</div></div> 
+    <p>В серый если буквы в искомом слове нет</p>
+    <p>В вводимом слове обязательно должны быть угаданные буквы и отсутствовать неподходящие.</p>
+  </div>
+
   <div class="error-container">Код не работает по причине: конченый долбоеб</div>
 
   <div class="guess-container">
     <div class="letter-row" id="0">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <div> <div></div> </div>
+      <div> <div></div> </div>
+      <div> <div></div> </div>
+      <div> <div></div> </div>
+      <div> <div></div> </div>
+      
     </div>
     <div class="letter-row" id="1">
       <div></div>
@@ -94,6 +107,7 @@
       <div class="keyboard-control-backspace"><</div>
       
 
+      <div class="keyboard-control-question">?</div>
       <div class="keyboard-letter">Я</div>
       <div class="keyboard-letter">Ч</div>
       <div class="keyboard-letter">С</div>
@@ -112,7 +126,7 @@
       
       
 
-    </div> --
+    </div> 
 
 
 
@@ -120,7 +134,7 @@
   </div>
 
 
-  <div class="inputs-container"><input type="text" autofocus class="input-holder"> <button class="check-btn">ENTER</button> </div>
+  <div class="inputs-container"><input type="text" class="input-holder"> <button class="check-btn">ENTER</button> </div>
   <button class="restart-btn">Новое слово</button>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
