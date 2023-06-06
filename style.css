@@ -38,7 +38,7 @@ body {
   .letter-row > div,
   #faq div {
     width: min(16vw);
-    height: min(15vw);
+    height: min(16vw);
     outline: 1px solid var(--letter-box-border);
     border-radius: 2px;
     background: var(--letter-box-bg);
