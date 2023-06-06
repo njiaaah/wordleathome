@@ -3626,7 +3626,6 @@ $(document).ready(function() {
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (bannedChars.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-dark')         
                     }          
                 }
@@ -3636,7 +3635,6 @@ $(document).ready(function() {
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (correctChars.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-yellow')         
                     }          
                 }
@@ -3646,7 +3644,6 @@ $(document).ready(function() {
                 for (let i = 0; i < $('.keyboard-letter').length; i++) {
                    
                     if (correctCharsPos.indexOf($('.keyboard-letter')[i].innerHTML.toLowerCase()) > -1) {
-                        // console.log($('.keyboard-letter')[i].innerHTML + ' is banned')
                         $('.keyboard-letter')[i].classList.add('kb-green')         
                     }          
                 }
@@ -3665,7 +3662,6 @@ $(document).ready(function() {
          // keyboard logic click
 
     $('.keyboard-letter').click( function(){
-        // console.log('itaped')
         if (isGameOver) {} 
         else {
             let KBkey = $(this).text()
@@ -3725,7 +3721,6 @@ $(document).ready(function() {
 
     setTimeout(()=> {
         startNewGame()
-        console.log(secretWord)
     },1)
 
   
