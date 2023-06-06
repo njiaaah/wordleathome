@@ -158,14 +158,45 @@ display: none;
         transform: scale(1);
     }
 
-    50% {
-        transform: scale(1.18);
-    }
+    10% {
+      transform: scale(.95);
+  }
+  15% {
+      transform: scale(1);
+      
+  }
+  50% {
+      transform: scale(1.1);
+      transform: translateY(-15%);
+      
+  }
 
     100% {
-        transform: scale(1);
+        transform: scale(1) ;
+        
     }
  } 
+
+ .blush {
+  animation-duration: 500ms;
+  animation-name: blush;
+  transition: all 500ms ease-in-out;
+ }
+
+ @keyframes blush {
+  0% {
+    outline: 1px solid currentColor;
+  }
+
+  50% {
+    outline: 5px solid red;
+    color: red
+  }
+
+  100% {
+    outline: 1px solid currentColor;
+  }
+ }
 
 
  /* keyboard */

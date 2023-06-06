@@ -3518,6 +3518,8 @@ $(document).ready(function() {
             if (inputContent.length == "") {
                 inputError = true
                 inputErrorMsg = 'Поле для ввода пустое'
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').addClass('blush')} , 100)
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').removeClass('blush')} , 600)
                 return(inputErrorMsg)
             } 
     
@@ -3526,16 +3528,24 @@ $(document).ready(function() {
             if (regex.test(inputContent)) {
                 inputError = true
                 inputErrorMsg = 'Используйте только кириллицу'
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').addClass('blush')} , 100)
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').removeClass('blush')} , 600)
                 return(inputErrorMsg)
             }         
     
             // word is correct lenght
     
-            if (inputContent.length === N) {} 
-            else {
+            if (inputContent.length < 5) {
                 inputError = true
                 inputErrorMsg = 'В слове менее 5 букв'
+                for (let i = 0; i < inputContent.length; i++) {
+                    setTimeout(()=>{$('#' + (currentRow) + ' > div:nth-child('+(i+1)+')').addClass('blush')} , 100)
+                    setTimeout(()=>{$('#' + (currentRow) + ' > div:nth-child('+(i+1)+')').removeClass('blush')} , 600) 
+                }
                 return(inputErrorMsg)
+            } 
+            else {
+                
             }
     
             // word is even exist
@@ -3543,6 +3553,8 @@ $(document).ready(function() {
             if ($.inArray(inputContent.toLowerCase(), wordArray) ==-1) {
                 inputError = true
                 inputErrorMsg = 'Мы не нашли такого в словарике'
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').addClass('blush')} , 100)
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').removeClass('blush')} , 600)
                 return(inputErrorMsg)
             } 
     
@@ -3551,6 +3563,8 @@ $(document).ready(function() {
             if ($.inArray(inputContent, guessedWords) == false ) {
                 inputError = true
                 inputErrorMsg = 'Вы уже пробовали это слово'
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').addClass('blush')} , 100)
+                setTimeout(()=>{$('#' + (currentRow) + ' > div').removeClass('blush')} , 600)
                 return(inputErrorMsg) 
             }
     
@@ -3561,7 +3575,15 @@ $(document).ready(function() {
             for (let i = 0; i < N; i++) {
                 if (bannedChars.indexOf(inputContent[i].toLowerCase()) > -1) {
                     inputError = true
-                    inputErrorMsg = 'Использованы неподходящие буквы'
+                    inputErrorMsg = 'Эти буквы уже использованы'
+                    for (let i = 0; i < N; i++) {
+                        if (bannedChars.indexOf(inputContent[i].toLowerCase()) > -1) {
+                            setTimeout(()=>{$('#' + (currentRow) + ' > div:nth-child('+(i+1)+')').addClass('blush')} , 100)
+                    setTimeout(()=>{$('#' + (currentRow) + ' > div:nth-child('+(i+1)+')').removeClass('blush')} , 600) 
+                        }
+                    }
+                        
+                    
                     return(inputErrorMsg) 
                 }
                 
