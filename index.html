@@ -14,6 +14,7 @@
 <body>
 
   <div id="faq">
+    <h2>Помощь</h2>
     <p>Необходимо угадать слово из 5 букв за 6 попыток. 
     После ввода слова буквы подкрашиваются:</p>
     <div class="letter-row "><div class="correct-char">Х</div></div> 
@@ -28,8 +29,8 @@
   <div class="error-container">Код не работает по причине: конченый долбоеб</div>
 
   <div class="guess-container">
-    <div class="letter-row" id="0">
-      <div> <div></div> </div>
+    <div class="letter-row " id="0">
+      <div class="win-jump"> <div></div> </div>
       <div> <div></div> </div>
       <div> <div></div> </div>
       <div> <div></div> </div>
@@ -136,6 +137,7 @@
 
   <div class="inputs-container"><input type="text" class="input-holder"> <button class="check-btn">ENTER</button> </div>
   <button class="restart-btn">Новое слово</button>
+  <div class="blur-bg"></div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="script.js"></script>
 </body>

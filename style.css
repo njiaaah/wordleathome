@@ -3,10 +3,10 @@ body {
     font-family: Roboto;
     display: grid;
     place-items: center;
-    background-color: rgb(228, 228, 228);
-    overflow-x: hidden;
+    background-color: var(--background-white);
     margin: 0;
     padding: 0;
+    overflow: hidden;
     
 
   }
@@ -15,11 +15,10 @@ body {
 
   :root {
       touch-action: manipulation;
-
+    --background-white: #e4e4e4;
     --letter-box-bg: #d8d8d8;
     --letter-box-border: #858585;
     --letter-box-font: #313131;
-
     --letter-box-green: #88d81f;
     --letter-box-yellow: #f7da37;
     --letter-box-dark: #818181;
@@ -58,8 +57,11 @@ display: none;
   }
 
   .input-holder {
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1px;
+    width: 1px;
     opacity: 0;
   }
 
@@ -101,19 +103,52 @@ display: none;
   }
 
   .restart-btn {
-    width: 90vw;
-    height: 15vw;
+    width: 80vw;
     font-size: 5rem;
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
+    padding: 2vh 0 2vh 0;
     display: none;
-    /* opacity: 0; */
+    position: absolute;
+    color: var(--letter-box-font);
+    font-weight: 600;
+    bottom: 50%;
+    z-index: 5;
+    border: 5px solid var(--letter-box-green);
+    transition: all 150ms ease-in-out;
+    box-shadow: 1px 1px 10px 5px rgba(0,0,0, .2);
+    border-radius: 15px;
+  }
+
+  .restart-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 100ms ease-in-out;
+    border: 10px solid var(--letter-box-green);
+    box-shadow: 1px 1px 25px 5px rgba(0,0,0, .05);
+  }
+
+  .blur-bg {
+    background-color: rgba(0,0,0, .35);
+
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    display: none;
+    backdrop-filter: blur(5px);
+  }
+
+  .display-block {
+    display: block;
   }
 
   .pop-up {
     scale: 1;
-    animation-duration: 400ms;
+    animation-duration: 500ms;
     animation-name: popup;
-    transition: transform 400ms ease-in-out;
+    transition: transform 500ms ease-in-out;
   }
 
 
@@ -166,10 +201,6 @@ display: none;
   margin: .35rem;
  }
 
- .keyboard-keys-container div:nth-child(25) {
-  /* grid-column-start: 2; */
- }
-
  .keyboard-control-backspace,
  .keyboard-control-enter,
  .keyboard-control-question {
@@ -208,33 +239,57 @@ display: none;
 
  #faq {
 
-  display: block;
+  display: none;
   position: absolute;
-  height: 100vh;
+  height: 100%;
   width: 65%;
   left: 0;
   top: 0;
   background-color: var(--letter-box-bg);
   z-index: 100;
-  box-shadow: 10px 0px 55px 125px rgba(0,0,0,.5);
+  box-shadow: 10px 0px 55px 5px rgba(0,0,0,.25);
   display: grid;
-  grid-template-rows: repeat(12, 1fr);
-  place-items: center;
+  grid-template-rows: 100px 160px 125px 125px 125px 125px 125px 150px;
+  /* place-items: center; */
   padding: 5rem;
-  transform: translateX(-1600px);
+  transform: translateX(-1200px);
+  
   transition: all 250ms ease-out;
  }
 
 
 
  #faq p {
+
+  padding: 0;
   margin: 0;
+  max-width: 90%;
   font-size: 2rem;
-  text-align: center;
+  text-align: left;
+  
+ }
+
+ #faq h2 {
+
+  padding: 0;
+  margin: 0;
+  max-width: 90%;
+  font-size: 2.5rem;
+  text-align: left;
   
  }
  
+ #faq .letter-row div{
+  font-size: 3rem;
+  width: 70px;
+  height: 70px;
+  margin: 0;
+  padding: 0;
+ }
+
  #faq .letter-row {
+  width: 70px;
+  height: 70px;
   margin: 0;
   padding: 0;
  }
@@ -301,44 +356,35 @@ display: none;
 /* faq */
 
 #faq {
-  display: block;
-  position: absolute;
   height: 100%;
   width: 25%;
-  left: 0;
-  top: 0;
-  background-color: var(--letter-box-bg);
-  z-index: 100;
-  box-shadow: 10px 0px 55px 25px rgba(0,0,0,.5);
-  display: grid;
-  grid-template-rows: repeat(12, 1fr);
-  place-items: center;
-  padding: 5rem;
-  transform: translateX(-1600px);
-  transition: all 250ms ease-out;
- }
-
- #faq > div,
- #faq > div > div { 
-  width:60px;
-  height: 60px;
-  font-size: 3rem;
-
+  background: none;
+  box-shadow: 10px 0px 55px 5px rgba(0,0,0,0);
+  grid-template-rows: repeat(10, 60px);
  }
 
 
 
  #faq p {
-  margin: 0;
+  max-width: 100%;
   font-size: 1rem;
-  text-align: center;
-  
+ }
+
+ #faq h2 {
+  font-size: 1.5rem;  
  }
  
- #faq .letter-row {
-  margin: 0;
-  padding: 0;
+ #faq .letter-row div{
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
  }
+
+ #faq .letter-row {
+  width: 40px;
+  height: 40px;
+ }
+
 
 
 }
