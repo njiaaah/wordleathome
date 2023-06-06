@@ -545,33 +545,20 @@ $(document).ready(function() {
         "лазка",
         "лакей",
         "лампа",
-        "ланка",
         "лапта",
-        "латук",
-        "латыш",
-        "лафет",
-        "лафит",
         "лачка",
         "левит",
-        "легат",
         "лемма",
         "лемур",
         "лента",
         "лепет",
-        "лепка",
-        "лепра",
         "лепта",
-        "лерка",
         "леска",
         "лесть",
         "леток",
         "леший",
         "лиана",
         "лидер",
-        "лизин",
-        "лизис",
-        "лизол",
-        "ликер",
         "лилия",
         "лиман",
         "лимит",
@@ -582,9 +569,6 @@ $(document).ready(function() {
         "литва",
         "литер",
         "литий",
-        "лития",
-        "литка",
-        "литье",
         "лицей",
         "лобок",
         "ловля",
@@ -592,7 +576,6 @@ $(document).ready(function() {
         "лодка",
         "локон",
         "ломка",
-        "лонжа",
         "лоток",
         "лотос",
         "лоция",
@@ -3471,15 +3454,15 @@ $(document).ready(function() {
 
     function showError() {
         inputError = false 
-        $('.error-container').html('Error: ' + inputErrorMsg)
+        $('.error-container').html('Ошибка: ' + inputErrorMsg)
         inputErrorMsg = ''
 
         $('.error-container').animate({
             opacity: 1
-        }, 1000, function(){
+        }, 500, function(){
             $('.error-container').animate({
                 opacity: 0
-            }, 2000)
+            }, 2500)
         })
 
         
@@ -3497,7 +3480,7 @@ $(document).ready(function() {
 
                 if (inputContent === 'я-лох' || inputContent === 'ялох' ) {
                     inputError = true
-                    inputErrorMsg = 'ЛОХ))))))))'
+                    inputErrorMsg = 'ЛОХ)))0)'
                     $('.input-holder').val(secretWord)
                     inputContent = $('.input-holder').val()
                     inputContentUpdate = inputContent.toUpperCase()
@@ -3534,7 +3517,7 @@ $(document).ready(function() {
     
             if (inputContent.length == "") {
                 inputError = true
-                inputErrorMsg = 'Напиши что-нибудь'
+                inputErrorMsg = 'Поле для ввода пустое'
                 return(inputErrorMsg)
             } 
     
@@ -3542,7 +3525,7 @@ $(document).ready(function() {
     
             if (regex.test(inputContent)) {
                 inputError = true
-                inputErrorMsg = 'Только кириллица'
+                inputErrorMsg = 'Используйте только кириллицу'
                 return(inputErrorMsg)
             }         
     
@@ -3551,7 +3534,7 @@ $(document).ready(function() {
             if (inputContent.length === N) {} 
             else {
                 inputError = true
-                inputErrorMsg = 'В слове должно быть 5 букв'
+                inputErrorMsg = 'В слове менее 5 букв'
                 return(inputErrorMsg)
             }
     
@@ -3559,7 +3542,7 @@ $(document).ready(function() {
     
             if ($.inArray(inputContent.toLowerCase(), wordArray) ==-1) {
                 inputError = true
-                inputErrorMsg = 'Слово выдумано'
+                inputErrorMsg = 'Мы не нашли такого в словарике'
                 return(inputErrorMsg)
             } 
     
@@ -3567,7 +3550,7 @@ $(document).ready(function() {
     
             if ($.inArray(inputContent, guessedWords) == false ) {
                 inputError = true
-                inputErrorMsg = 'уже пробовал это слово'
+                inputErrorMsg = 'Вы уже пробовали это слово'
                 return(inputErrorMsg) 
             }
     
@@ -3578,7 +3561,7 @@ $(document).ready(function() {
             for (let i = 0; i < N; i++) {
                 if (bannedChars.indexOf(inputContent[i].toLowerCase()) > -1) {
                     inputError = true
-                    inputErrorMsg = 'Эти буквы не подходят'
+                    inputErrorMsg = 'Использованы неподходящие буквы'
                     return(inputErrorMsg) 
                 }
                 
